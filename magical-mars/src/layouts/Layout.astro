@@ -1,3 +1,7 @@
+---                               
+import './src/styles/global.css'  
+---                               
+
 <!doctype html>
 <! -- Todos los comentarios de este archivo estan generados por la IA Copilot -->
 <html lang="es"> <!-- Define el tipo de documento como HTML y establece el idioma como español -->
@@ -15,16 +19,16 @@
         <!-- Enlace a la fuente Open Sans desde Google Fonts -->
 	</head>
 	<body>
-		<div id="contact-info"> <!-- Información de contacto encima del menú -->
+		<div id="contact-info">
+			<!-- Información de contacto encima del menú -->
 			<p>Contacto: +34 234 567 890 | Email: haizea@ejemplo.com</p>
 		</div>
-		<nav id="menu"> <!-- Menú de navegación horizontal -->
+		<nav id="menu">
+			<!-- Menú de navegación horizontal -->
 			<ul>
-				<li><a href="/">INICIO</a></li> <!-- Enlace a la página de inicio -->
-				<li><a href="/tarifas">TARIFAS</a></li> <!-- Enlace a la página "Acerca de" -->
-				<li><a href="/informacion">MÁS INFORMACIÓN</a></li> <!-- Enlace a la página de servicios -->
-				<li><a href="/contacto">CONTACTO</a></li> <!-- Enlace a la página de contacto -->
-				<li><a href="/seguridad">SEGURIDAD</a></li> 
+				<li><a href="/">INICIO</a></li>
+				<li><a href="/tarifas">TARIFAS</a></li>
+				<li><a href="/catalogo">CÁTALOGO</a></li>
 			</ul>
 		</nav>
 		<slot /> 
@@ -34,91 +38,3 @@
         </footer>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0; 
-		/* Elimina los márgenes predeterminados del navegador para html y body */
-		width: 100%; 
-		/* Establece el ancho de html y body al 100% del viewport */
-		height: 100%; 
-		/* Establece la altura de html y body al 100% del viewport */
-		font-family: 'Open Sans', sans-serif; 
-		/* Aplica la fuente Open Sans a todo el documento */
-	}
-
-	#contact-info {
-		background-color: #f9dbf6; 
-		/* Color de fondo para la sección de contacto */
-		padding: 0px; 
-		/* Espaciado interno */
-		text-align: right; 
-		/* Centra el texto horizontalmente */
-		font-size: 14px; 
-		/* Tamaño de fuente */
-		color: #333; 
-		/* Color del texto */
-	}
-
-	#contact-info p {
-		margin: 0; 
-		/* Elimina los márgenes del párrafo */
-		padding: 5px; 
-		/* Espaciado interno del párrafo */
-		font-weight: bold;
-		/* Estilo de texto en negrita */
-	}
-
-	#menu {
-		background-color: #d500b2; 
-		/* Color de fondo del menú */
-		padding: 10px; 
-		/* Espaciado interno del menú */
-	}
-
-	#menu ul {
-		list-style: none; 
-		/* Elimina los estilos de lista predeterminados */
-		margin: 0; 
-		/* Elimina los márgenes */
-		padding: 0; 
-		/* Elimina el relleno */
-		display: flex; 
-		/* Establece los elementos en línea horizontal */
-		justify-content: center; 
-		/* Centra los elementos horizontalmente */
-	}
-
-	#menu li {
-		margin: 0 15px; 
-		/* Espaciado entre los elementos del menú */
-	}
-
-	#menu a {
-		color: white; 
-		/* Color del texto de los enlaces */
-		text-decoration: none; 
-		/* Elimina el subrayado de los enlaces */
-		font-weight: bold; 
-		/* Estilo de texto en negrita */
-	}
-
-	#menu a:hover {
-		text-decoration: underline; 
-		/* Subraya el enlace al pasar el cursor */
-	}
-
-	#footer {
-        background-color: #333; 
-        /* Color de fondo del footer */
-        color: white; 
-        /* Color del texto del footer */
-        text-align: center; 
-        /* Centra el texto horizontalmente */
-        padding: 10px; 
-        /* Espaciado interno */
-        font-size: 14px; 
-        /* Tamaño de fuente */
-	}
-</style>

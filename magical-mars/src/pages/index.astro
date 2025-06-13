@@ -1,11 +1,25 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Define el tipo Telefono
+type Telefono = {
+    id: number; // Identificador único del teléfono
+    nombre: string; // Nombre del teléfono
+    precio: number; // Precio del teléfono
+};
+
+// Realiza una solicitud a la API para obtener la información de los teléfonos
+const response = await fetch('http://localhost:3001/telefonos');
+const telefonos: Telefono[] = await response.json(); // Convierte la respuesta en formato JSON y asegura el tipo
 ---
 
 <Layout>
-	<Welcome />
+    <h1>Lista de Teléfonos</h1>
+    <ul>
+        {telefonos.map((telefono) => (
+            <li>
+                <strong>{telefono.nombre}</strong>: {telefono.precio}€
+            </li>
+        ))}
+    </ul>
 </Layout>
