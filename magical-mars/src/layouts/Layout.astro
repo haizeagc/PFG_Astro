@@ -1,124 +1,40 @@
+---
+import '../styles/global.css'; // Importa el archivo CSS global con Tailwind
+import Footer from '../components/Footer.astro'; // Importa el componente de pie de página
+import Menu from '../components/Menu.astro'; // Importa el componente de menú
+import Contact from '../components/Contact.astro'; // Importa el componente de contacto
+const currentPath = Astro.url.pathname; // Obtiene la ruta actual del usuario
+---
+
 <!doctype html>
-<! -- Todos los comentarios de este archivo estan generados por la IA Copilot -->
 <html lang="es"> <!-- Define el tipo de documento como HTML y establece el idioma como español -->
-	<head>
-		<meta charset="UTF-8" /> <!-- Establece la codificación de caracteres como UTF-8 -->
-		<meta name="viewport" content="width=device-width" /> 
-		<!-- Configura la ventana gráfica para que se ajuste al ancho del dispositivo -->
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" /> 
-		<!-- Enlace al favicon del sitio en formato SVG -->
-		<meta name="generator" content={Astro.generator} /> 
-		<!-- Metaetiqueta que indica el generador del sitio (Astro) -->
-		<title>Astro Basics</title> 
-		<!-- Título de la página que aparece en la pestaña del navegador -->
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <head>
+        <meta charset="UTF-8" /> <!-- Establece la codificación de caracteres como UTF-8 -->
+        <meta name="viewport" content="width=device-width" /> 
+        <!-- Configura la ventana gráfica para que se ajuste al ancho del dispositivo -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> 
+        <!-- Enlace al favicon del sitio en formato SVG -->
+        <meta name="generator" content={Astro.generator} /> 
+        <!-- Metaetiqueta que indica el generador del sitio (Astro) -->
+        <title>Web Astro</title> 
+        <!-- Título de la página que aparece en la pestaña del navegador -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
         <!-- Enlace a la fuente Open Sans desde Google Fonts -->
-	</head>
-	<body>
-		<div id="contact-info"> <!-- Información de contacto encima del menú -->
-			<p>Contacto: +34 234 567 890 | Email: haizea@ejemplo.com</p>
-		</div>
-		<nav id="menu"> <!-- Menú de navegación horizontal -->
-			<ul>
-				<li><a href="/">INICIO</a></li> <!-- Enlace a la página de inicio -->
-				<li><a href="/tarifas">TARIFAS</a></li> <!-- Enlace a la página "Acerca de" -->
-				<li><a href="/informacion">MÁS INFORMACIÓN</a></li> <!-- Enlace a la página de servicios -->
-				<li><a href="/contacto">CONTACTO</a></li> <!-- Enlace a la página de contacto -->
-				<li><a href="/seguridad">SEGURIDAD</a></li> 
-			</ul>
-		</nav>
-		<slot /> 
-		<!-- Punto de inserción para contenido dinámico que será proporcionado por otras páginas o componentes -->
-		<footer id="footer"> <!-- Footer con derechos de autor -->
+    </head>
+    <body class="font-sans flex flex-col min-h-screen">
+        <!-- Contactos y menú fijos en la parte superior -->
+        <div class="fixed top-0 w-full z-50">
+            <Contact></Contact>
+            <Menu></Menu>
+        </div>
+        <!-- Contenido principal con margen superior para evitar que sea tapado -->
+        <div class="flex-grow mt-[100px]">
+            <slot /> 
+            <!-- Punto de inserción para contenido dinámico que será proporcionado por otras páginas o componentes -->
+        </div>
+        <Footer class="bg-gray-800 text-white text-center p-4">
+            <!-- Footer con derechos de autor -->
             <p>&copy; 2023 Haizea. Todos los derechos reservados.</p>
-        </footer>
-	</body>
+        </Footer>
+    </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0; 
-		/* Elimina los márgenes predeterminados del navegador para html y body */
-		width: 100%; 
-		/* Establece el ancho de html y body al 100% del viewport */
-		height: 100%; 
-		/* Establece la altura de html y body al 100% del viewport */
-		font-family: 'Open Sans', sans-serif; 
-		/* Aplica la fuente Open Sans a todo el documento */
-	}
-
-	#contact-info {
-		background-color: #f9dbf6; 
-		/* Color de fondo para la sección de contacto */
-		padding: 0px; 
-		/* Espaciado interno */
-		text-align: right; 
-		/* Centra el texto horizontalmente */
-		font-size: 14px; 
-		/* Tamaño de fuente */
-		color: #333; 
-		/* Color del texto */
-	}
-
-	#contact-info p {
-		margin: 0; 
-		/* Elimina los márgenes del párrafo */
-		padding: 5px; 
-		/* Espaciado interno del párrafo */
-		font-weight: bold;
-		/* Estilo de texto en negrita */
-	}
-
-	#menu {
-		background-color: #d500b2; 
-		/* Color de fondo del menú */
-		padding: 10px; 
-		/* Espaciado interno del menú */
-	}
-
-	#menu ul {
-		list-style: none; 
-		/* Elimina los estilos de lista predeterminados */
-		margin: 0; 
-		/* Elimina los márgenes */
-		padding: 0; 
-		/* Elimina el relleno */
-		display: flex; 
-		/* Establece los elementos en línea horizontal */
-		justify-content: center; 
-		/* Centra los elementos horizontalmente */
-	}
-
-	#menu li {
-		margin: 0 15px; 
-		/* Espaciado entre los elementos del menú */
-	}
-
-	#menu a {
-		color: white; 
-		/* Color del texto de los enlaces */
-		text-decoration: none; 
-		/* Elimina el subrayado de los enlaces */
-		font-weight: bold; 
-		/* Estilo de texto en negrita */
-	}
-
-	#menu a:hover {
-		text-decoration: underline; 
-		/* Subraya el enlace al pasar el cursor */
-	}
-
-	#footer {
-        background-color: #333; 
-        /* Color de fondo del footer */
-        color: white; 
-        /* Color del texto del footer */
-        text-align: center; 
-        /* Centra el texto horizontalmente */
-        padding: 10px; 
-        /* Espaciado interno */
-        font-size: 14px; 
-        /* Tamaño de fuente */
-	}
-</style>

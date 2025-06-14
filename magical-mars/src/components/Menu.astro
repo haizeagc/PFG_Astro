@@ -1,0 +1,24 @@
+---
+const currentPath = Astro.url.pathname; // Obtiene la ruta actual del usuario
+---
+
+<nav id="menu" class="bg-pink-500 text-white p-3 shadow-md fixed top-[30px] w-full z-40">
+    <!-- Menú de navegación horizontal -->
+    <ul class="flex justify-center space-x-4">
+        <li>
+            <a href="/" class={`text-sm text-white hover:font-bold hover:text-gray cursor-pointer ${currentPath === '/' ? 'font-bold' : 'text-pink'}`}>
+                INICIO
+            </a>
+        </li>
+        <li>
+            <a href="/tarifas" class={`text-sm text-white hover:font-bold hover:text-gray cursor-pointer ${currentPath === '/tarifas' ? 'font-bold' : 'text-pink'}`}>
+                TARIFAS
+            </a>
+        </li>
+        <li>
+            <a href="/catalogo" class={`text-sm text-white hover:font-bold hover:text-gray cursor-pointer ${currentPath === '/catalogo' ? 'font-bold' : 'text-pink'}`}>
+                CÁTALOGO
+            </a>
+        </li>
+    </ul>
+</nav>
