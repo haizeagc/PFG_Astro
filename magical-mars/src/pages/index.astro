@@ -1,25 +1,23 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import '../styles/global.css'; // Importa el archivo CSS global con Tailwind
+import Layout from '../layouts/Layout.astro'; // Importa el componente de diseño principal
 
-// Define el tipo Telefono
-type Telefono = {
-    id: number; // Identificador único del teléfono
-    nombre: string; // Nombre del teléfono
-    precio: number; // Precio del teléfono
-};
-
-// Realiza una solicitud a la API para obtener la información de los teléfonos
-const response = await fetch('http://localhost:3001/telefonos');
-const telefonos: Telefono[] = await response.json(); // Convierte la respuesta en formato JSON y asegura el tipo
 ---
 
 <Layout>
-    <h1>Lista de Teléfonos</h1>
-    <ul>
-        {telefonos.map((telefono) => (
-            <li>
-                <strong>{telefono.nombre}</strong>: {telefono.precio}€
-            </li>
-        ))}
-    </ul>
+    <h1 class="text-center text-2xl font-bold mb-6">PAGINA PRINCIPAL</h1>
+    <p>Bienvenido a nuestra tienda de telefonía móvil. Aquí encontrarás los mejores teléfonos y tarifas del mercado.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="border p-4 rounded shadow">
+            <h2 class="text-lg font-bold">Teléfonos Destacados</h2>
+            <p>Descubre los últimos modelos de teléfonos móviles con las mejores características.</p>
+        </div>
+        <div class="border p-4 rounded shadow">
+            <h2 class="text-lg font-bold">Tarifas Especiales</h2>
+            <p>Consulta nuestras tarifas competitivas y elige la que mejor se adapte a tus necesidades.</p>
+        </div>
+        <div class="border p-4 rounded shadow">
+            <h2 class="text-lg font-bold">Ofertas Exclusivas</h2>
+            <p>No te pierdas nuestras ofertas especiales por tiempo limitado. ¡Aprovecha ahora!</p>
+        </div>
 </Layout>

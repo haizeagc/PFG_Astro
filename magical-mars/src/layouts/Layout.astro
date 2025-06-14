@@ -2,6 +2,7 @@
 import '../styles/global.css'; // Importa el archivo CSS global con Tailwind
 import Footer from '../components/Footer.astro'; // Importa el componente de pie de página
 import Menu from '../components/Menu.astro'; // Importa el componente de menú
+import Contact from '../components/Contact.astro'; // Importa el componente de contacto
 const currentPath = Astro.url.pathname; // Obtiene la ruta actual del usuario
 ---
 
@@ -20,14 +21,20 @@ const currentPath = Astro.url.pathname; // Obtiene la ruta actual del usuario
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
         <!-- Enlace a la fuente Open Sans desde Google Fonts -->
     </head>
-    <body class="font-sans">
-        <div id="contact-info" class="bg-pink-200 text-right text-sm p-2">
-            <!-- Información de contacto encima del menú -->
-            <p class = "font-bold">Contacto: +34 234 567 890 | Email: haizea@ejemplo.com</p>
+    <body class="font-sans flex flex-col min-h-screen">
+        <!-- Contactos y menú fijos en la parte superior -->
+        <div class="fixed top-0 w-full z-50">
+            <Contact></Contact>
+            <Menu></Menu>
         </div>
-		<Menu></Menu>
-        <slot /> 
-        <!-- Punto de inserción para contenido dinámico que será proporcionado por otras páginas o componentes -->
-       <Footer></Footer>
+        <!-- Contenido principal con margen superior para evitar que sea tapado -->
+        <div class="flex-grow mt-[100px]">
+            <slot /> 
+            <!-- Punto de inserción para contenido dinámico que será proporcionado por otras páginas o componentes -->
+        </div>
+        <Footer class="bg-gray-800 text-white text-center p-4">
+            <!-- Footer con derechos de autor -->
+            <p>&copy; 2023 Haizea. Todos los derechos reservados.</p>
+        </Footer>
     </body>
 </html>

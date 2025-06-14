@@ -1,25 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Define el tipo Telefono
-type Telefono = {
-    id: number; // Identificador único del teléfono
-    nombre: string; // Nombre del teléfono
-    precio: number; // Precio del teléfono
+// Define el tipo Tarifa
+type Tarifa = {
+    id: number; // Identificador único de la tarifa
+    descripcion: string; // Descripción de la tarifa
+    precioMensual: number; // Precio mensual de la tarifa
+    minutosIncluidos: number; // Minutos incluidos en la tarifa
+    datosIncluidos: number; // Datos incluidos en GB
+    mensajesIncluidos: number; // Mensajes incluidos en la tarifa
 };
 
-// Realiza una solicitud a la API para obtener la información de los teléfonos
-const response = await fetch('http://localhost:3001/telefonos');
-const telefonos: Telefono[] = await response.json(); // Convierte la respuesta en formato JSON y asegura el tipo
+// Realiza una solicitud a la API para obtener la información de las tarifas
+const response = await fetch('http://localhost:3001/tarifas');
+const tarifas: Tarifa[] = await response.json(); // Convierte la respuesta en formato JSON y asegura el tipo
 ---
 
 <Layout>
-    <h1>TARIFAS</h1>
-    <ul>
-        {telefonos.map((telefono) => (
-            <li>
-                <strong>{telefono.nombre}</strong>: {telefono.precio}€
-            </li>
+
+    <h1 class="text-center text-2xl font-bold mb-6" >TARIFAS</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {tarifas.map((tarifa) => (
+            <div class="border p-4 rounded shadow">
+                <h2 class="text-lg font-bold">{tarifa.descripcion}</h2>
+                <p><strong>Precio Mensual:</strong> {tarifa.precioMensual}€</p>
+                <p><strong>Minutos Incluidos:</strong> {tarifa.minutosIncluidos} minutos</p>
+                <p><strong>Datos Incluidos:</strong> {tarifa.datosIncluidos} GB</p>
+                <p><strong>Mensajes Incluidos:</strong> {tarifa.mensajesIncluidos}</p>
+            </div>
         ))}
-    </ul>
+    </div>
+
 </Layout>
