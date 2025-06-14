@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Define el tipo Telefono
+type Telefono = {
+    id: number; // Identificador único del teléfono
+    nombre: string; // Nombre del teléfono
+    precio: number; // Precio del teléfono
+};
+
+// Realiza una solicitud a la API para obtener la información de los teléfonos
+const response = await fetch('http://localhost:3001/telefonos');
+const telefonos: Telefono[] = await response.json(); // Convierte la respuesta en formato JSON y asegura el tipo
+---
+
+<Layout>
+    <h1>TARIFAS</h1>
+    <ul>
+        {telefonos.map((telefono) => (
+            <li>
+                <strong>{telefono.nombre}</strong>: {telefono.precio}€
+            </li>
+        ))}
+    </ul>
+</Layout>
