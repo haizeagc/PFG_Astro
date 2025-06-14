@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro'; // Importa el diseño principal
 
 // Define el tipo Tarifa
 type Tarifa = {
@@ -17,18 +17,19 @@ const tarifas: Tarifa[] = await response.json(); // Convierte la respuesta en fo
 ---
 
 <Layout>
-
-    <h1 class="text-center text-2xl font-bold mb-6" >TARIFAS</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <h1 class="text-center text-2xl font-bold mb-6">TARIFAS</h1>
+    <div class="grid grid-cols-4 gap-4 px-6">
         {tarifas.map((tarifa) => (
-            <div class="border p-4 rounded shadow">
+            <div class="p-6 rounded shadow">
                 <h2 class="text-lg font-bold">{tarifa.descripcion}</h2>
                 <p><strong>Precio Mensual:</strong> {tarifa.precioMensual}€</p>
                 <p><strong>Minutos Incluidos:</strong> {tarifa.minutosIncluidos} minutos</p>
                 <p><strong>Datos Incluidos:</strong> {tarifa.datosIncluidos} GB</p>
                 <p><strong>Mensajes Incluidos:</strong> {tarifa.mensajesIncluidos}</p>
+                <button class="mt-4 bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition">
+                    Más información
+                </button>
             </div>
         ))}
     </div>
-
 </Layout>
