@@ -3,7 +3,6 @@ import '../styles/global.css'; // Importa el archivo CSS global con Tailwind
 import Footer from '../components/Footer.astro'; // Importa el componente de pie de página
 import Menu from '../components/Menu.astro'; // Importa el componente de menú
 import Contact from '../components/Contact.astro'; // Importa el componente de contacto
-const currentPath = Astro.url.pathname; // Obtiene la ruta actual del usuario
 ---
 
 <!doctype html>
@@ -32,9 +31,7 @@ const currentPath = Astro.url.pathname; // Obtiene la ruta actual del usuario
             <slot /> 
             <!-- Punto de inserción para contenido dinámico que será proporcionado por otras páginas o componentes -->
         </div>
-        <Footer class="bg-gray-800 text-white text-center p-4">
-            <!-- Footer con derechos de autor -->
-            <p>&copy; 2023 Haizea. Todos los derechos reservados.</p>
+        <Footer></Footer>
         </Footer>
     </body>
 </html>

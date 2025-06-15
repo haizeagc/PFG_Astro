@@ -1,0 +1,28 @@
+---
+// Define el tipo Telefono
+type Telefono = {
+    id: number; // Identificador único del teléfono
+    marca: string; // Marca del teléfono
+    modelo: string; // Modelo del teléfono
+    almacenamiento: number; // Capacidad de almacenamiento en GB
+    ram: number; // Memoria RAM en GB
+    precio: number; // Precio del teléfono
+};
+
+// Realiza una solicitud a la API para obtener la información de los teléfonos
+const response = await fetch('http://localhost:3001/telefonos');
+const telefonos: Telefono[] = await response.json(); // Convierte la respuesta en formato JSON y asegura el tipo
+---
+
+<h1 class="text-center text-2xl font-bold mb-6">CATÁLOGO DE TELÉFONOS</h1>
+<div class="max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
+    {telefonos.map((telefono) => (
+        <div class="p-4 rounded shadow hover:scale-105 transition-transform">
+            <img src={`/imagenes/${telefono.id}.jpg`} alt={`Imagen de ${telefono.marca} ${telefono.modelo}`} class="w-full h-auto mb-4" />
+            <h2 class="text-lg font-bold">{telefono.marca} {telefono.modelo}</h2>
+            <p><strong>Almacenamiento:</strong> {telefono.almacenamiento} GB</p>
+            <p><strong>RAM:</strong> {telefono.ram} GB</p>
+            <p><strong>Precio:</strong> {telefono.precio}€</p>
+        </div>
+    ))}
+</div>
