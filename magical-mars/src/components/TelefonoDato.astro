@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets'; // Importa el componente Image
+
 // Define el tipo Telefono
 type Telefono = {
     id: number; // Identificador único del teléfono
@@ -7,6 +9,7 @@ type Telefono = {
     almacenamiento: number; // Capacidad de almacenamiento en GB
     ram: number; // Memoria RAM en GB
     precio: number; // Precio del teléfono
+    imagen: string; // Nombre del archivo de la imagen (ubicado en src/assets/imagenes)
 };
 
 // Realiza una solicitud a la API para obtener la información de los teléfonos
@@ -18,7 +21,13 @@ const telefonos: Telefono[] = await response.json(); // Convierte la respuesta e
 <div class="max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
     {telefonos.map((telefono) => (
         <div class="p-4 rounded shadow hover:scale-105 transition-transform">
-            <img src={`/imagenes/${telefono.id}.jpg`} alt={`Imagen de ${telefono.marca} ${telefono.modelo}`} class="w-full h-auto mb-4" />
+            <Image 
+                src={import(`/src/assets/imagenes/${telefono.id}.jpg`)} 
+                alt={`Imagen de ${telefono.marca} ${telefono.modelo}`} 
+                width={300} 
+                height={400} 
+                class="w-full h-auto mb-4" 
+            />
             <h2 class="text-lg font-bold">{telefono.marca} {telefono.modelo}</h2>
             <p><strong>Almacenamiento:</strong> {telefono.almacenamiento} GB</p>
             <p><strong>RAM:</strong> {telefono.ram} GB</p>
