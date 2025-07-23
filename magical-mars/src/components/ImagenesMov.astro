@@ -1,0 +1,32 @@
+---
+const imagenes = [
+    '/carrusel/01.jpg',
+    '/carrusel/02.jpg',
+    '/carrusel/03.jpg',
+    '/carrusel/04.jpg',
+];
+let indiceActual = 0;
+
+// Función para cambiar automáticamente la imagen
+function cambiarImagenAuto() {
+    indiceActual = (indiceActual + 1) % imagenes.length;
+    actualizarImagen();
+}
+
+// Función para actualizar la imagen mostrada
+function actualizarImagen() {
+    const imagen = document.getElementById('imagen-carrusel');
+    if (imagen) {
+        imagen.src = imagenes[indiceActual];
+        imagen.alt = `Imagen ${indiceActual + 1}`;
+    }
+}
+
+// Inicia el carrusel automáticamente al cargar
+setInterval(cambiarImagenAuto, 3000); // Cambia cada 3 segundos
+---
+
+<div class="max-w-lg mx-auto p-4 bg-gray-200 rounded shadow">
+    <h1 class="text-2xl font-bold text-center mb-4">Carrusel de Imágenes</h1>
+    <ImagenesMov client:load />
+</div>
