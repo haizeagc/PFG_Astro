@@ -1,8 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro'; // Importa el diseño principal
-import TelefonoDato from '../components/TelefonoDato.astro'; // Importa el componente de datos de teléfonos
+import TelefonoDato from '../components/catalogo/TelefonoDato.astro'; // Importa el componente de datos de teléfonos
+import Filtro from '../components/catalogo/Filtro.astro'; // Importa el componente de filtro
+import Paginacion from '../components/catalogo/Paginacion.astro';
 ---
 
 <Layout>
-<TelefonoDato></TelefonoDato>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <!-- Filtro a la izquierda -->
+        <div class="md:col-span-1 ml-4">
+            <Filtro></Filtro>
+        </div>
+        <!-- TeléfonoDato a la derecha -->
+        <div class="md:col-span-3">
+            <TelefonoDato></TelefonoDato>
+        </div>
+        <!-- Paginación centrada -->
+        <div class="md:col-span-4 flex justify-center items-center">
+            <Paginacion></Paginacion>
+        </div>
+    </div>
 </Layout>

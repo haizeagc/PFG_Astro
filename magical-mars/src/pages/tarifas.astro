@@ -1,8 +1,14 @@
 ---
-import TarifasDato from '../components/TarifasDato.astro';
+import Elecciones from '../components/tarifas/Elecciones.astro';
+import TarifasDato from '../components/tarifas/TarifasDato.astro';
 import Layout from '../layouts/Layout.astro'; // Importa el diseño principal
 ---
 
 <Layout>
    <TarifasDato></TarifasDato>
+   <!-- Línea de separación en gris claro -->
+   <hr class="border-t border-gray-300 my-4" />
+   <div class="mb-4">
+       <Elecciones></Elecciones>
+   </div>
 </Layout>

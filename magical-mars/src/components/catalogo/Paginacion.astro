@@ -1,0 +1,36 @@
+---
+let paginaActual = 1;
+const totalPaginas = 10; // Cambia este valor según el número total de páginas
+
+function cambiarPagina(direccion) {
+    if (direccion === 'anterior' && paginaActual > 1) {
+        paginaActual--;
+    } else if (direccion === 'siguiente' && paginaActual < totalPaginas) {
+        paginaActual++;
+    }
+}
+---
+<div class="flex items-center justify-center space-x-4 mt-4 mb-4">
+    <!-- Botón Anterior -->
+    <button
+        class="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400 disabled:bg-gray-200 disabled:cursor-not-allowed"
+        onClick={() => cambiarPagina('anterior')}
+        disabled={paginaActual === 1}
+    >
+        Anterior
+    </button>
+
+    <!-- Número de página actual -->
+    <span class="text-lg font-bold">
+        Página {paginaActual} de {totalPaginas}
+    </span>
+
+    <!-- Botón Siguiente -->
+    <button
+        class="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400 disabled:bg-gray-200 disabled:cursor-not-allowed"
+        onClick={() => cambiarPagina('siguiente')}
+        disabled={paginaActual === totalPaginas}
+    >
+        Siguiente
+    </button>
+</div>
