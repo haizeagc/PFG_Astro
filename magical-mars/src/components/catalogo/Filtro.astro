@@ -8,7 +8,7 @@ let marcaSeleccionada = '';
 let memoriaSeleccionada = '';
 ---
 
-<div class="h-screen w-64 bg-[#FCD9FC] p-4 shadow fixed left-0 top-0">
+<div class="h-screen w-64 bg-[#fff2ff] p-4 shadow fixed left-0 top-0 border-r-2 border-pink-500">
     <h1 class="text-xl font-bold mt-20">Filtros</h1>
 
     <!-- Filtro por marca -->
@@ -18,7 +18,7 @@ let memoriaSeleccionada = '';
             class="w-full p-2 border rounded"
             onChange={(event) => marcaSeleccionada = event.target.value}
         >
-            <option value="">Todas</option>
+            <option value="">Todas las marcas</option>
             {marcas.map((marca) => (
                 <option value={marca}>{marca}</option>
             ))}
@@ -46,7 +46,7 @@ let memoriaSeleccionada = '';
             class="w-full p-2 border rounded"
             onChange={(event) => memoriaSeleccionada = event.target.value}
         >
-            <option value="">Todas</option>
+            <option value="">Todas las capacidades</option>
             {memorias.map((memoria) => (
                 <option value={memoria}>{memoria}</option>
             ))}
