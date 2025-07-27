@@ -56,7 +56,7 @@ function handleDatosChange(event: Event) {
                 step="5"
                 value={datosSeleccionados}
                 class="w-full accent-pink-500"
-                oninput="document.getElementById('datos-valor').innerText = this.value; handleDatosChange(event)"
+                onInput={handleDatosChange}
             />
         </div>
 

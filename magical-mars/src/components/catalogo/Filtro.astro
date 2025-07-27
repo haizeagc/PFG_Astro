@@ -2,8 +2,61 @@
 let precioMin = 0;
 let precioMax = 1000;
 let precioSeleccionado = 500;
+let marcas = ['Samsung', 'Apple', 'Xiaomi', 'Huawei'];
+let memorias = ['64 GB', '128 GB', '256 GB', '512 GB'];
+let marcaSeleccionada = '';
+let memoriaSeleccionada = '';
 ---
 
-<div class="max-w-md mx-auto p-4 bg-gray-200 rounded shadow">
-    <h1 class="text-2xl font-bold text-center">Filtros</h1>
+<div class="h-screen w-64 bg-[#FCD9FC] p-4 shadow fixed left-0 top-0">
+    <h1 class="text-xl font-bold mt-20">Filtros</h1>
+
+    <!-- Filtro por marca -->
+    <div class="mb-4">
+        <label class="block font-bold mb-2">Marca:</label>
+        <select
+            class="w-full p-2 border rounded"
+            onChange={(event) => marcaSeleccionada = event.target.value}
+        >
+            <option value="">Todas</option>
+            {marcas.map((marca) => (
+                <option value={marca}>{marca}</option>
+            ))}
+        </select>
+    </div>
+
+    <!-- Filtro por precio -->
+    <div class="mb-4">
+        <label class="block font-bold mb-2">Precio: {precioSeleccionado}€</label>
+        <input
+            type="range"
+            min={precioMin}
+            max={precioMax}
+            step="10"
+            value={precioSeleccionado}
+            class="w-full accent-pink-500"
+            onInput={(event) => precioSeleccionado = event.target.value}
+        />
+    </div>
+
+    <!-- Filtro por memoria -->
+    <div class="mb-4">
+        <label class="block font-bold mb-2">Memoria:</label>
+        <select
+            class="w-full p-2 border rounded"
+            onChange={(event) => memoriaSeleccionada = event.target.value}
+        >
+            <option value="">Todas</option>
+            {memorias.map((memoria) => (
+                <option value={memoria}>{memoria}</option>
+            ))}
+        </select>
+    </div>
+
+    <!-- Botón para aplicar filtros -->
+    <div class="text-center">
+        <button class="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition">
+            Aplicar Filtros
+        </button>
+    </div>
 </div>
