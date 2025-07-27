@@ -26,10 +26,14 @@ const telefonos: Telefono[] = await response.json(); // Convierte la respuesta e
                 height={400} 
                 class="w-full h-auto mb-4" 
             />
-            <h2 class="text-lg font-bold">{telefono.marca} {telefono.modelo}</h2>
-            <p><strong>Almacenamiento:</strong> {telefono.almacenamiento} GB</p>
-            <p><strong>RAM:</strong> {telefono.ram} GB</p>
-            <p><strong>Precio:</strong> {telefono.precio}€</p>
+            <h2 class="text-sm font-bold text-center">{telefono.marca} {telefono.modelo}</h2>
+            <p class="text-sm"><strong>Almacenamiento:</strong> {telefono.almacenamiento} GB</p>
+            <p class="text-sm"><strong>RAM:</strong> {telefono.ram} GB</p>
+            {telefono.precio === 0 ? (
+                <p class="text-sm font-bold">GRATIS</p>
+            ) : (
+                <p class="text-sm"><strong>Precio:</strong> {`${telefono.precio}€`}</p>
+            )}
         </div>
     ))}
 </div>
