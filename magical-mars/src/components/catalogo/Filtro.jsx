@@ -14,18 +14,18 @@ export default function FiltroSidebar({ onFilterChange }) {
   };
 
   return (
-    <div className="w-64 h-screen p-4 border-r-2 border-[#5b60ff] bg-[#ebebff] fixed left-0 top-20 shadow-md">
-      <h2 className="text-lg font-bold mb-4">Filtros</h2>
+    <div className="w-64 h-screen p-4 border-r-2 border-pink-500 bg-pink-100 fixed left-0 top-20 shadow-md">
+      <h2 className="text-lg font-bold mb-4 text-pink-700">Filtros</h2>
 
       {/* Filtro por marca */}
       <div className="mb-4">
-        <label htmlFor="marca" className="block text-sm font-bold text-gray-700">
+        <label htmlFor="marca" className="block text-sm font-bold text-pink-700">
           Marca:
         </label>
         <select
           name="marca"
           id="marca"
-          className="mt-2 p-2 border rounded w-full"
+          className="mt-2 p-2 border border-pink-500 rounded w-full bg-pink-50 text-pink-700"
           onChange={handleMarcaChange} // Detecta el cambio de selección
         >
           <option value="">Todas las marcas</option>
@@ -46,14 +46,14 @@ export default function FiltroSidebar({ onFilterChange }) {
       <div className="mb-4">
         <label
           htmlFor="almacenamiento"
-          className="block text-sm font-bold text-gray-700"
+          className="block text-sm font-bold text-pink-700"
         >
           Memoria:
         </label>
         <select
           name="almacenamiento"
           id="almacenamiento"
-          className="mt-2 p-2 border rounded w-full"
+          className="mt-2 p-2 border border-pink-500 rounded w-full bg-pink-50 text-pink-700"
           onChange={handleMemoriaChange} // Detecta el cambio de selección
         >
           <option value="">Todas las capacidades</option>

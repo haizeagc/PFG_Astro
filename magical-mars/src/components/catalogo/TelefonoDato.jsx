@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const LIMITE_POR_PAGINA = 8;
 
-function TelefonoDato() {
+export default function TelefonoDato({ filtros }) {
   const [telefonos, setTelefonos] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
   const [totalPaginas, setTotalPaginas] = useState(0);
@@ -11,7 +11,16 @@ function TelefonoDato() {
   useEffect(() => {
     const fetchTelefonos = async () => {
       try {
-        const url = `http://localhost:3001/telefonos?_page=${paginaActual}&_limit=${LIMITE_POR_PAGINA}`;
+        let url = `http://localhost:3001/telefonos?_page=${paginaActual}&_limit=${LIMITE_POR_PAGINA}`;
+
+        // Lógica para manejar los diferentes filtros
+        if (filtros.marca) {
+          url += `&marca=${filtros.marca}`;
+        }
+        if (filtros.almacenamiento) {
+          url += `&almacenamiento=${filtros.almacenamiento}`;
+        }
+
         const response = await fetch(url);
         const data = await response.json();
         const totalRegistros = response.headers.get("X-Total-Count");
@@ -23,7 +32,12 @@ function TelefonoDato() {
     };
 
     fetchTelefonos();
-  }, [paginaActual]);
+  }, [paginaActual, filtros]); // Ejecuta el efecto cuando cambian la página o los filtros
+
+  // Resetea la página actual a 1 cuando cambian los filtros
+  useEffect(() => {
+    setPaginaActual(1);
+  }, [filtros]);
 
   // Función para cambiar de página
   const cambiarPagina = (nuevaPagina) => {
@@ -39,7 +53,7 @@ function TelefonoDato() {
         {telefonos.map((telefono) => (
           <div key={telefono.id} className="p-4 rounded shadow hover:scale-105 transition-transform">
             <img
-              src={`/src/assets/imagenes/${telefono.id}.jpg`}
+              src={`/src/assets/imagenes/${telefono.id}.jpg`} // Asegúrate de que las imágenes estén en la ruta correcta
               alt={`Imagen de ${telefono.marca} ${telefono.modelo}`}
               className="w-full h-auto mb-4"
             />
@@ -93,5 +107,3 @@ function TelefonoDato() {
     </div>
   );
 }
-
-export default TelefonoDato;
