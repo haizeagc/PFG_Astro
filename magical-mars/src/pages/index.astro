@@ -1,13 +1,13 @@
 ---
 import '../styles/global.css'; // Importa el archivo CSS global con Tailwind
 import Layout from '../layouts/Layout.astro'; // Importa el componente de diseño principal
-import ImagenesMov from '../components/ImagenesMov.astro'; // Importa el componente de imágenes móviles
+import Carrusel from '../components/ImagenesMov.jsx'; // Importa el componente de imágenes móviles
 ---
 
 <Layout>
     <h1 class="text-center text-2xl font-bold mb-4">PÁGINA PRINCIPAL</h1>
 
-    <ImagenesMov client:load/> 
+    <Carrusel client:load/> 
 
     <p class="text-center mb-3">Bienvenido a nuestra tienda de telefonía móvil. Aquí encontrarás los mejores teléfonos y tarifas del mercado.</p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-6">

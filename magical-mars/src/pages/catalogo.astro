@@ -1,23 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro'; // Importa el diseño principal
-import TelefonoDato from '../components/catalogo/TelefonoDato.astro'; // Importa el componente de datos de teléfonos
-import Filtro from '../components/catalogo/Filtro.astro'; // Importa el componente de filtro
-import Paginacion from '../components/catalogo/Paginacion.astro';
+import TelefonoDato from '../components/catalogo/TelefonoDato.jsx'; // Importa el componente de datos de teléfonos
+import FiltroSidebar from '../components/catalogo/Filtro.jsx'; // Importa el filtro
 ---
 
 <Layout>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <!-- Filtro a la izquierda -->
         <div class="md:col-span-1">
-            <Filtro></Filtro>
+            <FiltroSidebar onFilterChange={(filtros) => {
+                // Aquí puedes manejar los filtros seleccionados
+                console.log('Filtros aplicados:', filtros);
+            }} />
         </div>
         <!-- TeléfonoDato a la derecha -->
         <div class="md:col-span-3">
-            <TelefonoDato></TelefonoDato>
-        </div>
-        <!-- Paginación centrada -->
-        <div class="md:col-span-4 flex justify-center items-center">
-            <Paginacion></Paginacion>
+            <TelefonoDato client:load />
         </div>
     </div>
 </Layout>
