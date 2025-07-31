@@ -7,20 +7,37 @@ export default function TelefonoDato({ filtros }) {
   const [paginaActual, setPaginaActual] = useState(1);
   const [totalPaginas, setTotalPaginas] = useState(0);
 
+  // Función para construir la URL con filtros dinámicos
+  const construirUrlConFiltros = () => {
+    let url = `http://localhost:3001/telefonos?_page=${paginaActual}&_limit=${LIMITE_POR_PAGINA}`;
+
+    // Lógica para manejar los diferentes filtros con OR
+    if (filtros.marca && filtros.marca.length > 0) {
+      const marcasQuery = filtros.marca
+        .map((marca) => `marca=${encodeURIComponent(marca)}`)
+        .join("&"); // Genera parámetros separados por "&"
+      url += `&${marcasQuery}`;
+    }
+
+    if (filtros.almacenamiento && filtros.almacenamiento.length > 0) {
+      const almacenamientoQuery = filtros.almacenamiento
+        .map((memoria) => `almacenamiento=${encodeURIComponent(memoria)}`)
+        .join("&"); // Genera parámetros separados por "&"
+      url += `&${almacenamientoQuery}`;
+    }
+
+    if (filtros.orden) {
+      url += `&_sort=precio&_order=${filtros.orden}`; // Agrega el orden por precio
+    }
+
+    return url;
+  };
+
   // Función para obtener los datos desde la API
   useEffect(() => {
     const fetchTelefonos = async () => {
       try {
-        let url = `http://localhost:3001/telefonos?_page=${paginaActual}&_limit=${LIMITE_POR_PAGINA}`;
-
-        // Lógica para manejar los diferentes filtros
-        if (filtros.marca) {
-          url += `&marca=${filtros.marca}`;
-        }
-        if (filtros.almacenamiento) {
-          url += `&almacenamiento=${filtros.almacenamiento}`;
-        }
-
+        const url = construirUrlConFiltros();
         const response = await fetch(url);
         const data = await response.json();
         const totalRegistros = response.headers.get("X-Total-Count");
