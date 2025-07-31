@@ -6,6 +6,8 @@ export default function TelefonoDato({ filtros }) {
   const [telefonos, setTelefonos] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
   const [totalPaginas, setTotalPaginas] = useState(0);
+  const [movilSeleccionado, setMovilSeleccionado] = useState(null); // Estado para el móvil seleccionado
+  const [mostrarPopUp, setMostrarPopUp] = useState(false); // Estado para controlar la visibilidad del pop-up
 
   // Función para construir la URL con filtros dinámicos
   const construirUrlConFiltros = () => {
@@ -63,12 +65,28 @@ export default function TelefonoDato({ filtros }) {
     }
   };
 
+  // Función para abrir el pop-up
+  const abrirPopUp = (telefono) => {
+    setMovilSeleccionado(telefono); // Establece el móvil seleccionado
+    setMostrarPopUp(true); // Muestra el pop-up
+  };
+
+  // Función para cerrar el pop-up
+  const cerrarPopUp = () => {
+    setMovilSeleccionado(null); // Limpia el móvil seleccionado
+    setMostrarPopUp(false); // Oculta el pop-up
+  };
+
   return (
     <div className="max-w-screen-lg mx-auto">
       {/* Lista de teléfonos */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
         {telefonos.map((telefono) => (
-          <div key={telefono.id} className="p-4 rounded shadow hover:scale-105 transition-transform">
+          <div
+            key={telefono.id}
+            className="p-4 rounded shadow hover:scale-105 hover:border-2 hover:border-pink-500 transition-transform cursor-pointer"
+            onClick={() => abrirPopUp(telefono)} // Abre el pop-up al hacer clic
+          >
             <img
               src={`/src/assets/imagenes/${telefono.id}.jpg`} // Asegúrate de que las imágenes estén en la ruta correcta
               alt={`Imagen de ${telefono.marca} ${telefono.modelo}`}
@@ -121,6 +139,29 @@ export default function TelefonoDato({ filtros }) {
           Siguiente
         </button>
       </div>
+
+      {/* Pop-up */}
+      {mostrarPopUp && movilSeleccionado && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded shadow-lg max-w-md w-full">
+            <button
+              onClick={cerrarPopUp}
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+            >
+              ✖
+            </button>
+            <img
+              src={`/src/assets/imagenes/${movilSeleccionado.id}.jpg`}
+              alt={`Imagen de ${movilSeleccionado.marca} ${movilSeleccionado.modelo}`}
+              className="w-full h-auto mb-4"
+            />
+            <h2 className="text-lg font-bold mb-2">{movilSeleccionado.marca} {movilSeleccionado.modelo}</h2>
+            <p><strong>Almacenamiento:</strong> {movilSeleccionado.almacenamiento} GB</p>
+            <p><strong>RAM:</strong> {movilSeleccionado.ram} GB</p>
+            <p><strong>Precio:</strong> {movilSeleccionado.precio === 0 ? "GRATIS" : `${movilSeleccionado.precio}€`}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
