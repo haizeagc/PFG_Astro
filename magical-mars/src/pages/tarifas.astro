@@ -7,8 +7,8 @@ import Layout from '../layouts/Layout.astro'; // Importa el diseño principal
 <Layout>
    <TarifasDato></TarifasDato>
    <!-- Línea de separación en gris claro -->
-   <hr class="border-t border-gray-300 my-4" />
+   <hr class="border-10 border-pink-500 my-4" />
    <div class="mb-4">
-       <Elecciones></Elecciones>
+       <Elecciones client:load></Elecciones> <!-- Renderiza Elecciones en el cliente -->
    </div>
 </Layout>
