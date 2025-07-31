@@ -4,7 +4,7 @@ import TelefonoDato from "./TelefonoDato.jsx"; // Importa el componente de datos
 
 export default function Telefono() {
   // Estado para los filtros
-  const [filtros, setFiltros] = useState({ marca: "", almacenamiento: "" });
+  const [filtros, setFiltros] = useState({ marca: [], almacenamiento: [], orden: "" });
 
   // Función para actualizar los filtros
   const handleFilterChange = (nuevosFiltros) => {

@@ -17,7 +17,7 @@ const tarifas: Tarifa[] = await response.json(); // Convierte la respuesta en fo
 <h1 class="text-center text-2xl font-bold mb-6">TARIFAS</h1>
 <div class="grid grid-cols-4 gap-4 px-6">
     {tarifas.map((tarifa) => (
-        <div class="p-6 rounded shadow">
+        <div class="p-6 rounded shadow hover:border-2 hover:border-pink-500 transition">
             <h2 class="text-lg font-bold">{tarifa.descripcion}</h2>
             <p><strong>Precio Mensual:</strong> {tarifa.precioMensual}€</p>
             <p><strong>Minutos Incluidos:</strong> {tarifa.minutosIncluidos} minutos</p>
