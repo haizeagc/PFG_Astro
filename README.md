@@ -1,4 +1,4 @@
-## Proyecto realizado con el framework de NEXT.JS
+## Proyecto realizado con el framework de ASTRO
 Este proyecto se ha realizado para poder analizar el renderizado y optimizacion del framework de Astro. Para eso se ha hecho una pequeña app para poder hacer un estudio. Ademas de eso este proyecto tambien usara tailwind para estilizar la aplicación.
 
 ## Para poder ejecutar la app
