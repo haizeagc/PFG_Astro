@@ -2,6 +2,7 @@
 // Define el tipo Tarifa
 type Tarifa = {
     id: number; // Identificador único de la tarifa
+    nombre: string; // Nombre de la tarifa
     descripcion: string; // Descripción de la tarifa
     precioMensual: number; // Precio mensual de la tarifa
     minutosIncluidos: number; // Minutos incluidos en la tarifa
@@ -14,19 +15,31 @@ const response = await fetch('http://localhost:3001/tarifas');
 const tarifas: Tarifa[] = await response.json(); // Convierte la respuesta en formato JSON y asegura el tipo
 ---
 <body id="TarifasDato">
-<h1 class="text-center text-2xl font-bold mb-6">TARIFAS</h1>
-<div class="grid grid-cols-4 gap-4 px-6">
-    {tarifas.map((tarifa) => (
-        <div class="p-6 rounded shadow hover:border-2 hover:border-pink-500 transition">
-            <h2 class="text-lg font-bold">{tarifa.descripcion}</h2>
-            <p><strong>Precio Mensual:</strong> {tarifa.precioMensual}€</p>
-            <p><strong>Minutos Incluidos:</strong> {tarifa.minutosIncluidos} minutos</p>
-            <p><strong>Datos Incluidos:</strong> {tarifa.datosIncluidos} GB</p>
-            <p><strong>Mensajes Incluidos:</strong> {tarifa.mensajesIncluidos}</p>
-            <button class="mt-4 bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition">
-                Más información
-            </button>
+    <div class="flex flex-col items-center justify-center p-8">
+        {/* Cuadrado morado con el primer h1 */}
+        <h1 class="text-3xl font-bold mb-4">TARIFAS DE LA EMPRESA</h1>
+  
+        {/* Contenedor de las tarifas */}
+        <div class="w-full p-4 shadow-md bg-white">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {tarifas.map((tarifa) => (
+              <div
+                class="p-4 rounded shadow-lg bg-gray-100 transition-transform hover:scale-105"
+              >
+                <div class="flex items-baseline justify-center gap-1">
+                <p class="text-6xl font-bold text-center">{tarifa.precioMensual}</p>  
+                <p class="text-2xl text-center">,00€/mes</p>
+                </div>
+                <button class=" font-bold mt-2 mb-2 bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 w-full">
+                  VER TARIFA
+                </button>
+                <h2 class=" text-xl font-bold text-black text-center">{tarifa.nombre}</h2>
+                <p class="text-center">{tarifa.minutosIncluidos} minutos</p>
+                <p class="text-center">{tarifa.datosIncluidos}GB</p>
+                <p class="text-center">{tarifa.mensajesIncluidos} mensajes</p>
+              </div>
+            ))}
+          </div>
         </div>
-    ))}
-</div>
+      </div>
 </body>

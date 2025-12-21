@@ -5,21 +5,23 @@ import Carrusel from '../components/ImagenesMov.jsx'; // Importa el componente d
 ---
 
 <Layout>
-    <h1 class="text-center text-2xl font-bold mb-4">PÁGINA PRINCIPAL</h1>
+    <h1 class="text-center text-3xl font-bold mb-4">PÁGINA PRINCIPAL</h1>
 
     <Carrusel client:load/> 
 
-    <p class="text-center mb-3">Bienvenido a nuestra tienda de telefonía móvil. Aquí encontrarás los mejores teléfonos y tarifas del mercado.</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-6">
-        <div class="p-6 rounded shadow">
+    <p class="text-center mt-4 mb-3 text-2xl">
+        Bienvenido a nuestra tienda de telefonía móvil. Aquí encontrarás los mejores teléfonos y tarifas del mercado.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-gray-100 p-6 rounded shadow">
             <h2 class="text-lg font-bold">Teléfonos Destacados</h2>
             <p>Descubre los últimos modelos de teléfonos móviles con las mejores características.</p>
         </div>
-        <div class="p-6 rounded shadow">
+        <div class="bg-gray-100 p-6 rounded shadow">
             <h2 class="text-lg font-bold">Tarifas Especiales</h2>
             <p>Consulta nuestras tarifas competitivas y elige la que mejor se adapte a tus necesidades.</p>
         </div>
-        <div class="p-6 rounded shadow">
+        <div class="bg-gray-100 p-6 rounded shadow">
             <h2 class="text-lg font-bold">Ofertas Exclusivas</h2>
             <p>No te pierdas nuestras ofertas especiales por tiempo limitado. ¡Aprovecha ahora!</p>
         </div>
