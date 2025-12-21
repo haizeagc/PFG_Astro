@@ -92,14 +92,20 @@ export default function TelefonoDato({ filtros }) {
               alt={`Imagen de ${telefono.marca} ${telefono.modelo}`}
               className="w-full h-auto mb-4"
             />
-            <h2 className="text-sm font-bold text-center">{telefono.marca} {telefono.modelo}</h2>
-            <p className="text-sm"><strong>Almacenamiento:</strong> {telefono.almacenamiento} GB</p>
-            <p className="text-sm"><strong>RAM:</strong> {telefono.ram} GB</p>
-            {telefono.precio === 0 ? (
-              <p className="text-sm font-bold">GRATIS</p>
-            ) : (
-              <p className="text-sm"><strong>Precio:</strong> {`${telefono.precio}€`}</p>
-            )}
+            <p className="text-lg text-center">{telefono.marca}</p>
+      <h2 className="font-bold text-lg text-center">
+         {telefono.modelo} {telefono.almacenamiento}GB
+      </h2>
+      <p className="text-sm font-bold text-center">
+        {telefono.precio === 0 ? (
+          "GRATIS"
+        ) : (
+        <>
+      <span className="text-2xl">{Math.floor(telefono.precio)}</span>
+      <span className="text-sm">,{telefono.precio.toFixed(2).split(".")[1]}€/mes</span>
+        </>
+    )}
+  </p>
           </div>
         ))}
       </div>
